@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI in NGOs - Transform Your Impact | Anas Baalbaki</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-gradient: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+            --secondary-gradient: linear-gradient(135deg, #7cb342 0%, #689f38 100%);
+            --success-gradient: linear-gradient(135deg, #26a69a 0%, #00897b 100%);
+            --dark-gradient: linear-gradient(135deg, #37474f 0%, #263238 100%);
+            --un-blue: #0099FF;
+            --un-dark: #003366;
+            --ngo-green: #7cb342;
+            --ngo-blue: #4a90e2;
+            --ngo-teal: #26a69a;
+        }
+
+        /* Light Blue to Purple Background */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #E3F2FD 0%, #F3E5F5 100%);
+            overflow-x: hidden;
+        }
+
+        /* Hero Background with Blue to Purple Gradient */
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(187, 222, 251, 0.6) 0%,
+                rgba(225, 190, 231, 0.6) 50%,
+                rgba(206, 147, 216, 0.6) 100%);
+            z-index: -2;
+        }
+
+        /* Navbar with matching gradient */
+        .navbar {
+            background: linear-gradient(135deg, rgba(66, 165, 245, 0.95) 0%, rgba(156, 39, 176, 0.95) 100%);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(0, 0, 0, 0.95);
+            padding: 10px 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #e3f2fd;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section with Blue-Purple Background */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            color: #1a237e;
+            padding: 80px 20px;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        /* Wave Visual at Bottom */
+        .ngo-visual {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200"><defs><linearGradient id="wave" x1="0%25" y1="0%25" x2="100%25" y2="0%25"><stop offset="0%25" style="stop-color:%2342a5f5;stop-opacity:0.8" /><stop offset="100%25" style="stop-color:%23ab47bc;stop-opacity:0.8" /></linearGradient></defs><path fill="url(%23wave)" d="M0,100 C200,50 400,50 600,100 C800,150 1000,150 1200,100 L1200,200 L0,200 Z" opacity="0.6"/><path fill="%23ffffff" d="M0,120 C300,70 600,130 900,80 C1050,55 1150,55 1200,80 L1200,200 L0,200 Z" opacity="0.3"/></svg>') no-repeat center bottom;
+            background-size: cover;
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--ngo-green);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: #1a237e;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-highlight {
+            background: linear-gradient(45deg, var(--ngo-blue) 0%, var(--ngo-teal) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: #424242;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .trainer-intro {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: #37474f;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .btn {
+            padding: 18px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--primary-gradient);
+            color: white;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.6);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--ngo-blue);
+            border: 2px solid var(--ngo-blue);
+        }
+
+        .btn-secondary:hover {
+            background: var(--ngo-blue);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        /* Stats Section */
+        .stats {
+            background: #fff;
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            border-radius: 15px;
+            background: #f8f9fa;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: bold;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        /* About Section */
+        .about-section {
+            background: linear-gradient(135deg, 
+                rgba(224, 242, 254, 0.9) 0%, 
+                rgba(243, 229, 245, 0.9) 100%);
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .trainer-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .trainer-avatar {
+            width: 150px;
+            height: 150px;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .trainer-name {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .trainer-title {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        /* Certifications Section */
+        .certifications-section {
+            background: linear-gradient(135deg, 
+                rgba(240, 248, 255, 0.9) 0%, 
+                rgba(230, 240, 250, 0.9) 50%, 
+                rgba(220, 235, 245, 0.9) 100%);
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .certifications-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .certifications-grid {
+            margin-top: 50px;
+        }
+
+        .cert-category {
+            margin-bottom: 50px;
+        }
+
+        .cert-category-title {
+            font-size: 1.8rem;
+            color: var(--ngo-blue);
+            margin-bottom: 25px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .cert-category-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--primary-gradient);
+            border-radius: 2px;
+        }
+
+        .cert-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .cert-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cert-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--primary-gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .cert-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .cert-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .cert-card h4 {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .cert-issuer {
+            color: var(--ngo-blue);
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .cert-year {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .cert-details {
+            color: #666;
+            font-size: 0.85rem;
+            font-style: italic;
+            margin: 5px 0;
+        }
+
+        .cert-card[style*="grid-column: span 3"] {
+            grid-column: 1 / -1;
+        }
+
+        /* Modules Section */
+        .modules {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #ffffff 0%, #f3e5f5 100%);
+            position: relative;
+        }
+
+        .modules-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .section-header p {
+            font-size: 1.3rem;
+            color: #666;
+        }
+
+        .module-section {
+            margin-bottom: 60px;
+        }
+
+        .module-section-title {
+            font-size: 2rem;
+            color: #667eea;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .module-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .module-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--primary-gradient);
+        }
+
+        .module-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .module-card.un-module::before {
+            background: linear-gradient(90deg, var(--un-blue), var(--un-dark));
+        }
+
+        .module-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-gradient);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .un-module .module-number {
+            background: linear-gradient(135deg, var(--un-blue), var(--un-dark));
+        }
+
+        .module-title {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .module-description {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .module-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .module-features li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 25px;
+            color: #555;
+        }
+
+        .module-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #38ef7d;
+            font-weight: bold;
+        }
+
+        .module-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .module-duration {
+            background: var(--secondary-gradient);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .module-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .module-link:hover {
+            gap: 10px;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background: white;
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 40px;
+            border-radius: 20px;
+            position: relative;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #f5f5f5;
+        }
+
+        .close-modal:hover {
+            color: #333;
+            background: #eee;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, 
+                #42a5f5 0%, 
+                #ab47bc 100%);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .cta-section h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #1e88e5 0%, #8e24aa 100%);
+            color: white;
+            padding: 60px 0 30px;
+            position: relative;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .footer-section p, .footer-section li {
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #e3f2fd;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            opacity: 0.8;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.95);
+                flex-direction: column;
+                padding: 20px;
+                gap: 20px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .modules-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">🤖 AI in NGOs</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" onclick="closeMenu()">Home</a></li>
+                <li><a href="#about" onclick="closeMenu()">About</a></li>
+                <li><a href="#certifications" onclick="closeMenu()">Certifications</a></li>
+                <li><a href="#modules" onclick="closeMenu()">Training</a></li>
+                <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+            </ul>
+            <div class="mobile-menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg"></div>
+        <div class="ngo-visual"></div>
+        
+        <div class="hero-content">
+            <div class="hero-badge">🌍 Empowering NGOs Through Technology</div>
+            <h1>Master <span class="hero-highlight">AI</span> for<br>NGO Excellence</h1>
+            <p class="hero-subtitle">Learn AI fundamentals and advanced M&E techniques. Save time. Deliver impact.</p>
+            <p class="trainer-intro">Led by <strong>Anas Baalbaki</strong> - Senior M&E Expert & AI Trainer<br>
+            <span style="font-size: 1rem; opacity: 0.85;">MSc Social Welfare & Social Policy (Anglia Ruskin University, Cambridge) | BSc Social Work | Multiple M&E Certifications</span></p>
+            
+            <div class="cta-buttons">
+                <a href="#modules" class="btn btn-primary">Explore Training</a>
+                <a href="#about" class="btn btn-secondary">Meet Your Trainer</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <svg width="30" height="30" viewBox="0 0 30 30">
+                <path d="M15 20 L10 15 M15 20 L20 15" stroke="#1a237e" stroke-width="2" fill="none"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Stats Section with NGO Theme -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item" style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);">
+                <div class="stat-number">7+</div>
+                <div class="stat-label">Years M&E Experience</div>
+                <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">Working with NGOs across Lebanon</p>
+            </div>
+            <div class="stat-item" style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);">
+                <div class="stat-number">10+</div>
+                <div class="stat-label">NGOs Transformed</div>
+                <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">From local to international organizations</p>
+            </div>
+            <div class="stat-item" style="background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);">
+                <div class="stat-number">M&E</div>
+                <div class="stat-label">Certified Expert</div>
+                <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">Multiple certifications in MEAL</p>
+            </div>
+            <div class="stat-item" style="background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);">
+                <div class="stat-number">2025</div>
+                <div class="stat-label">Training Launch</div>
+                <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">Join the first cohort</p>
+            </div>
+        </div>
+        
+        <!-- NGO Sectors Visual -->
+        <div style="max-width: 1200px; margin: 60px auto 0; padding: 0 20px; text-align: center;">
+            <h3 style="font-size: 2rem; color: #333; margin-bottom: 30px;">Expertise Across NGO Sectors</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                <div style="background: #f5f5f5; padding: 30px; border-radius: 10px; transition: all 0.3s;">
+                    <div style="font-size: 3rem; margin-bottom: 10px;">🏥</div>
+                    <h4 style="color: #333;">Primary Healthcare</h4>
+                    <p style="color: #666; font-size: 0.9rem;">Quality assurance & health data</p>
+                </div>
+                <div style="background: #f5f5f5; padding: 30px; border-radius: 10px; transition: all 0.3s;">
+                    <div style="font-size: 3rem; margin-bottom: 10px;">🧠</div>
+                    <h4 style="color: #333;">Mental Health</h4>
+                    <p style="color: #666; font-size: 0.9rem;">MHPSS programs & evaluation</p>
+                </div>
+                <div style="background: #f5f5f5; padding: 30px; border-radius: 10px; transition: all 0.3s;">
+                    <div style="font-size: 3rem; margin-bottom: 10px;">👶</div>
+                    <h4 style="color: #333;">Child Protection</h4>
+                    <p style="color: #666; font-size: 0.9rem;">Safeguarding & case management</p>
+                </div>
+                <div style="background: #f5f5f5; padding: 30px; border-radius: 10px; transition: all 0.3s;">
+                    <div style="font-size: 3rem; margin-bottom: 10px;">♿</div>
+                    <h4 style="color: #333;">Disability Inclusion</h4>
+                    <p style="color: #666; font-size: 0.9rem;">Accessibility & inclusive M&E</p>
+                </div>
+                <div style="background: #f5f5f5; padding: 30px; border-radius: 10px; transition: all 0.3s;">
+                    <div style="font-size: 3rem; margin-bottom: 10px;">👩‍💼</div>
+                    <h4 style="color: #333;">Women Empowerment</h4>
+                    <p style="color: #666; font-size: 0.9rem;">Gender-sensitive programming</p>
+                </div>
+                <div style="background: #f5f5f5; padding: 30px; border-radius: 10px; transition: all 0.3s;">
+                    <div style="font-size: 3rem; margin-bottom: 10px;">🏘️</div>
+                    <h4 style="color: #333;">Community Development</h4>
+                    <p style="color: #666; font-size: 0.9rem;">Social cohesion & development</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="about-container">
+            <div class="trainer-card">
+                <div class="trainer-avatar">AB</div>
+                <h3 class="trainer-name">Anas Baalbaki</h3>
+                <p class="trainer-title">Senior M&E Expert & AI Trainer</p>
+                <p style="color: #666; line-height: 1.8;">7+ years transforming M&E systems across humanitarian sectors. Multiple certifications in M&E methodologies. Expertise in mental health, child protection, disabilities, and PHC quality.</p>
+            </div>
+            <div class="about-content">
+                <h2>Why AI is Essential for Modern NGOs</h2>
+                <p>As a Senior M&E specialist with extensive field experience and a <strong>Social Worker by training</strong>, I understand the unique challenges NGOs face. My educational journey includes:</p>
+                <ul style="list-style: none; margin: 20px 0; color: #666;">
+                    <li>🎓 <strong>MSc International Social Welfare & Social Policy</strong> - Anglia Ruskin University, Cambridge, UK</li>
+                    <li>🎓 <strong>BSc Social Work</strong> - Modern University for Business and Science</li>
+                    <li>🎓 <strong>BSc Business Management</strong> - Lebanese American University</li>
+                    <li>📜 <strong>Multiple M&E Certifications</strong> from leading humanitarian organizations</li>
+                </ul>
+                <p>This unique combination of social work practice, policy understanding, and business management allows me to bridge the gap between humanitarian values and modern technology. I've developed practical AI approaches that respect the human-centered nature of NGO work while maximizing efficiency.</p>
+                <div class="cta-buttons" style="margin-top: 30px;">
+                    <a href="#modules" class="btn btn-primary">View Curriculum</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="certifications-section">
+        <div class="certifications-container">
+            <div class="section-header">
+                <h2>📜 Professional Certifications</h2>
+                <p>Continuous learning and professional development in M&E and humanitarian work</p>
+            </div>
+
+            <div class="certifications-grid">
+                <!-- Education & Degrees -->
+                <div class="cert-category">
+                    <h3 class="cert-category-title">Academic Qualifications</h3>
+                    <div class="cert-cards">
+                        <div class="cert-card">
+                            <div class="cert-icon">🎓</div>
+                            <h4>Master of Science (Merit)</h4>
+                            <p class="cert-issuer">Anglia Ruskin University, Cambridge</p>
+                            <p class="cert-details">International Social Welfare & Social Policy</p>
+                            <p class="cert-year">2018</p>
+                        </div>
+                        <div class="cert-card">
+                            <div class="cert-icon">🎓</div>
+                            <h4>Bachelor of Art</h4>
+                            <p class="cert-issuer">Modern University for Business & Science</p>
+                            <p class="cert-details">Social Work</p>
+                            <p class="cert-year">2019</p>
+                        </div>
+                        <div class="cert-card">
+                            <div class="cert-icon">🎓</div>
+                            <h4>Bachelor of Science</h4>
+                            <p class="cert-issuer">Lebanese American University</p>
+                            <p class="cert-details">Business Management</p>
+                            <p class="cert-year">2016</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- M&E Certifications -->
+                <div class="cert-category">
+                    <h3 class="cert-category-title">Monitoring & Evaluation Certifications</h3>
+                    <div class="cert-cards">
+                        <div class="cert-card">
+                            <div class="cert-icon">📊</div>
+                            <h4>MEAL in Emergencies</h4>
+                            <p class="cert-issuer">Save the Children</p>
+                            <p class="cert-year">2021</p>
+                        </div>
+                        <div class="cert-card">
+                            <div class="cert-icon">📈</div>
+                            <h4>Monitoring and Evaluation Practices</h4>
+                            <p class="cert-issuer">International Rescue Committee (IRC)</p>
+                            <p class="cert-year">2023</p>
+                        </div>
+                        <div class="cert-card">
+                            <div class="cert-icon">📋</div>
+                            <h4>Creating a MEAL Plan</h4>
+                            <p class="cert-issuer">American Red Cross</p>
+                            <p class="cert-year">2023</p>
+                        </div>
+                        <div class="cert-card">
+                            <div class="cert-icon">🎯</div>
+                            <h4>Emergency Needs Assessment</h4>
+                            <p class="cert-issuer">Catholic Relief Services (CRS)</p>
+                            <p class="cert-year">2023</p>
+                        </div>
+                        <div class="cert-card">
+                            <div class="cert-icon">✍️</div>
+                            <h4>Proposal Writing</h4>
+                            <p class="cert-issuer">Cornerstone OnDemand Foundation</p>
+                            <p class="cert-year">2022</p>
+                        </div>
+                        <div class="cert-card">
+                            <div class="cert-icon">📋</div>
+                            <h4>Planning for Monitoring and Evaluation</h4>
+                            <p class="cert-issuer">Philanthropy University (FHI360)</p>
+                            <p class="cert-year">2023</p>
+                        </div>
+                        <div class="cert-card">
+                            <div class="cert-icon">📐</div>
+                            <h4>Fundamentals of Project Management</h4>
+                            <p class="cert-issuer">Philanthropy University</p>
+                            <p class="cert-year">2021</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Specialized Certifications -->
+                <div class="cert-category">
+                    <h3 class="cert-category-title">Specialized Training</h3>
+                    <div class="cert-cards">
+                        <div class="cert-card">
+                            <div class="cert-icon">🏥</div>
+                            <h4>Quality Capacity Building - Task Shifting</h4>
+                            <p class="cert-issuer">International Medical Corps & MOPH</p>
+                            <p class="cert-details">EU-Funded PHC Quality Program</p>
+                            <p class="cert-year">2024-2025</p>
+                        </div>
+                        <div class="cert-card">
+                            <div class="cert-icon">🧠</div>
+                            <h4>Mental Health & Psychosocial Wellbeing</h4>
+                            <p class="cert-issuer">Save the Children</p>
+                            <p class="cert-details">Children, Adolescents & Youth</p>
+                            <p class="cert-year">2021</p>
+                        </div>
+                        <div class="cert-card">
+                            <div class="cert-icon">🤖</div>
+                            <h4>Claude for You</h4>
+                            <p class="cert-issuer">Anthropic</p>
+                            <p class="cert-details">AI Assistant Training</p>
+                            <p class="cert-year">2025</p>
+                        </div>
+                        <div class="cert-card">
+                            <div class="cert-icon">💻</div>
+                            <h4>Data Analysis Using Excel</h4>
+                            <p class="cert-issuer">LMI Global Organization</p>
+                            <p class="cert-details">SPSS Level 1</p>
+                            <p class="cert-year">2023</p>
+                        </div>
+                        <div class="cert-card">
+                            <div class="cert-icon">📊</div>
+                            <h4>Data Analysis Using Excel in LMI</h4>
+                            <p class="cert-issuer">Global Board Group</p>
+                            <p class="cert-year">2023</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Professional Skills -->
+                <div class="cert-category">
+                    <h3 class="cert-category-title">M&E Professional Experience</h3>
+                    <div class="cert-cards">
+                        <div class="cert-card" style="grid-column: span 3;">
+                            <div class="cert-icon">💼</div>
+                            <h4>M&E System Design & Implementation</h4>
+                            <p style="text-align: left; padding: 15px 0;">
+                                <strong>Extensive experience in:</strong><br>
+                                ✓ Designing comprehensive M&E policies and manuals<br>
+                                ✓ Developing M&E trackers and dashboards<br>
+                                ✓ Creating logical frameworks (LogFrames)<br>
+                                ✓ Developing MEAL plans and strategies<br>
+                                ✓ Writing technical proposals and donor reports<br>
+                                ✓ Designing data collection tools and surveys<br>
+                                ✓ Building Excel-based M&E systems with advanced formulas<br>
+                                ✓ Training staff on M&E methodologies
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View Certificates Button -->
+            <div style="text-align: center; margin-top: 50px;">
+                <p style="color: #666; margin-bottom: 20px;">Need to verify any certificate?</p>
+                <a href="mailto:anas.baalbaki22@gmail.com?subject=Certificate Verification Request" class="btn btn-primary" style="background: var(--primary-gradient);">
+                    Contact for Verification
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modules Section -->
+    <section id="modules" class="modules">
+        <div class="modules-container">
+            <div class="section-header">
+                <h2>🎯 Comprehensive Training Program</h2>
+                <p>Master AI fundamentals, then apply them to transform your M&E practice</p>
+            </div>
+
+            <!-- AI Fundamentals Section -->
+            <div class="module-section">
+                <h3 class="module-section-title">Part 1: AI Fundamentals for NGO Professionals</h3>
+                <div class="modules-grid">
+                    <!-- Module 1 -->
+                    <div class="module-card" onclick="openModule('module1')">
+                        <div class="module-number">1</div>
+                        <h3 class="module-title">AI Foundations for NGOs</h3>
+                        <p class="module-description">Demystify AI and discover the essential tools that will transform your NGO work.</p>
+                        <ul class="module-features">
+                            <li>Understand AI in practical NGO terms</li>
+                            <li>Compare ChatGPT, Claude, Gemini & more</li>
+                            <li>Choose the right tool for each task</li>
+                            <li>Navigate free vs. paid options smartly</li>
+                        </ul>
+                        <div class="module-footer">
+                            <span class="module-duration">3 Hours</span>
+                            <span class="module-link">View Details →</span>
+                        </div>
+                    </div>
+
+                    <!-- Module 2 -->
+                    <div class="module-card" onclick="openModule('module2')">
+                        <div class="module-number">2</div>
+                        <h3 class="module-title">AI Communication Mastery</h3>
+                        <p class="module-description">Learn the secret language of AI to get professional results every time.</p>
+                        <ul class="module-features">
+                            <li>Master the RTF Framework</li>
+                            <li>Advanced RISE methodology</li>
+                            <li>Build your prompt library</li>
+                            <li>Avoid common AI pitfalls</li>
+                        </ul>
+                        <div class="module-footer">
+                            <span class="module-duration">3 Hours</span>
+                            <span class="module-link">View Details →</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- M&E in NGOs Section -->
+            <div class="module-section">
+                <h3 class="module-section-title">Part 2: AI-Powered M&E for NGOs</h3>
+                <div class="modules-grid">
+                    <!-- Module 3 -->
+                    <div class="module-card" onclick="openModule('module3')">
+                        <div class="module-number">3</div>
+                        <h3 class="module-title">AI-Powered Report Writing</h3>
+                        <p class="module-description">Create compelling donor reports and technical documents in a fraction of the time.</p>
+                        <ul class="module-features">
+                            <li>Donor report excellence</li>
+                            <li>Technical documentation mastery</li>
+                            <li>Data storytelling techniques</li>
+                            <li>Multi-stakeholder adaptation</li>
+                        </ul>
+                        <div class="module-footer">
+                            <span class="module-duration">3 Hours</span>
+                            <span class="module-link">View Details →</span>
+                        </div>
+                    </div>
+
+                    <!-- Module 4 -->
+                    <div class="module-card" onclick="openModule('module4')">
+                        <div class="module-number">4</div>
+                        <h3 class="module-title">Smart Data Collection</h3>
+                        <p class="module-description">Design surveys and tools that capture exactly what you need.</p>
+                        <ul class="module-features">
+                            <li>Bias-free survey design</li>
+                            <li>Interview guide development</li>
+                            <li>Cultural sensitivity integration</li>
+                            <li>Digital tool optimization</li>
+                        </ul>
+                        <div class="module-footer">
+                            <span class="module-duration">3 Hours</span>
+                            <span class="module-link">View Details →</span>
+                        </div>
+                    </div>
+
+                    <!-- Module 5 -->
+                    <div class="module-card" onclick="openModule('module5')">
+                        <div class="module-number">5</div>
+                        <h3 class="module-title">Logical Framework Mastery</h3>
+                        <p class="module-description">Build bulletproof logframes that impress donors and guide success.</p>
+                        <ul class="module-features">
+                            <li>Theory of Change development</li>
+                            <li>SMART indicator creation</li>
+                            <li>Risk assessment automation</li>
+                            <li>Stakeholder alignment tools</li>
+                        </ul>
+                        <div class="module-footer">
+                            <span class="module-duration">4 Hours</span>
+                            <span class="module-link">View Details →</span>
+                        </div>
+                    </div>
+
+                    <!-- Module 6 -->
+                    <div class="module-card" onclick="openModule('module6')">
+                        <div class="module-number">6</div>
+                        <h3 class="module-title">Advanced AI Integration</h3>
+                        <p class="module-description">Automate workflows and scale your impact exponentially.</p>
+                        <ul class="module-features">
+                            <li>Workflow automation strategies</li>
+                            <li>API integration simplified</li>
+                            <li>Batch processing mastery</li>
+                            <li>Custom AI assistant creation</li>
+                        </ul>
+                        <div class="module-footer">
+                            <span class="module-duration">3 Hours</span>
+                            <span class="module-link">View Details →</span>
+                        </div>
+                    </div>
+
+                    <!-- Module 7 - UN Frameworks -->
+                    <div class="module-card un-module" onclick="openModule('module7')">
+                        <div class="module-number">7</div>
+                        <h3 class="module-title">UN M&E Frameworks + AI</h3>
+                        <p class="module-description">Align your AI skills with UN standards for global impact.</p>
+                        <ul class="module-features">
+                            <li>UNICEF Results-Based Management</li>
+                            <li>UNDP RBM Framework integration</li>
+                            <li>SDG indicator automation</li>
+                            <li>UN reporting standards with AI</li>
+                        </ul>
+                        <div class="module-footer">
+                            <span class="module-duration">3 Hours</span>
+                            <span class="module-link">View Details →</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="cta-section">
+        <div class="cta-content">
+            <h2>🚀 Ready to Transform Your NGO with AI?</h2>
+            <p>Join the first cohort of NGO professionals mastering AI for humanitarian impact.</p>
+            <div class="cta-buttons">
+                <a href="mailto:anas.baalbaki22@gmail.com?subject=AI in NGOs Training Inquiry" class="btn btn-primary" style="background: white; color: #667eea;">Contact Me</a>
+            </div>
+            <p style="margin-top: 30px; font-size: 1rem; opacity: 0.8;">Starting January 2025 • Limited spots available</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About the Training</h3>
+                <p>AI in NGOs is a comprehensive training program designed for humanitarian professionals ready to embrace AI technology for greater impact.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#modules">Training Modules</a></li>
+                    <li><a href="#about">About Anas Baalbaki</a></li>
+                    <li><a href="#certifications">Certifications</a></li>
+                    <li><a href="mailto:anas.baalbaki22@gmail.com">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Information</h3>
+                <p>📧 <a href="mailto:anas.baalbaki22@gmail.com" style="color: white; text-decoration: underline;">anas.baalbaki22@gmail.com</a></p>
+                <p>📱 <a href="tel:+96171132513" style="color: white; text-decoration: underline;">+961 71 132513</a></p>
+                <p>🌍 Beirut, Lebanon</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 AI in NGOs by Anas Baalbaki. Empowering humanitarian professionals through AI innovation.</p>
+        </div>
+    </footer>
+
+    <!-- Modal for Module Details -->
+    <div id="moduleModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div id="modalContent">
+                <!-- Dynamic content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Module details data
+        const moduleDetails = {
+            module1: {
+                title: "Module 1: AI Foundations for NGOs",
+                duration: "3 Hours",
+                overview: "Demystify AI technology and discover how to leverage the best tools for your NGO work. No technical background required!",
+                objectives: [
+                    "Understand AI in simple, practical terms that make sense for NGO contexts",
+                    "Compare major AI platforms (ChatGPT, Claude, Gemini) with hands-on testing",
+                    "Select the perfect AI tool for each specific NGO task",
+                    "Make smart decisions between free and paid options for your organization's budget"
+                ],
+                topics: [
+                    "AI Basics: What it really is (and isn't) for NGO professionals",
+                    "The Big Three: ChatGPT vs Claude vs Gemini deep dive",
+                    "Hidden gems: Specialized AI tools for humanitarian work",
+                    "Cost-benefit analysis: When to upgrade and when free is enough",
+                    "Hands-on practice with real NGO scenarios"
+                ],
+                outcomes: "By the end of this module, you'll confidently navigate the AI landscape and choose the right tool for any NGO task, saving both time and money."
+            },
+            module2: {
+                title: "Module 2: AI Communication Mastery",
+                duration: "3 Hours",
+                overview: "Learn the secret language of AI. Transform from someone who gets mediocre results to an AI whisperer who gets professional outputs every time.",
+                objectives: [
+                    "Master the RTF (Role, Task, Format) framework for consistent quality",
+                    "Apply the advanced RISE framework for complex analytical tasks",
+                    "Build a personal library of high-performing prompts",
+                    "Identify and avoid the top 10 AI communication mistakes"
+                ],
+                topics: [
+                    "The psychology of AI: How machines 'think' and respond",
+                    "RTF Framework: Your formula for perfect prompts",
+                    "RISE Framework: Advanced techniques for complex tasks",
+                    "Real-time practice with immediate feedback",
+                    "Building your prompt library for instant productivity"
+                ],
+                outcomes: "You'll communicate with AI like a pro, getting first-try success instead of frustrating back-and-forth. Your outputs will be 10x better than 90% of AI users."
+            },
+            module3: {
+                title: "Module 3: AI-Powered Report Writing",
+                duration: "3 Hours",
+                overview: "Turn report writing from your biggest time drain into your secret weapon. Create compelling donor reports in minutes, not days.",
+                objectives: [
+                    "Generate donor reports that secure continued funding",
+                    "Create technical M&E documentation to professional standards",
+                    "Master data storytelling that brings numbers to life",
+                    "Adapt content perfectly for different stakeholder audiences"
+                ],
+                topics: [
+                    "Donor report formula: Structure that wins funding",
+                    "Technical writing: Evaluations, assessments, and audits",
+                    "The art of data storytelling with AI assistance",
+                    "Multi-stakeholder adaptation techniques",
+                    "Quality assurance and fact-checking protocols"
+                ],
+                outcomes: "You'll produce professional reports 70% faster while improving quality. Your donors will be impressed, and you'll have time for strategic work instead of endless writing."
+            },
+            module4: {
+                title: "Module 4: Smart Data Collection Design",
+                duration: "3 Hours",
+                overview: "Design data collection tools that capture exactly what you need while respecting cultural sensitivities and eliminating bias.",
+                objectives: [
+                    "Create surveys that people actually want to complete",
+                    "Develop culturally-appropriate interview guides",
+                    "Build automatic quality checks into your data collection",
+                    "Integrate with digital tools like KoBo and ODK seamlessly"
+                ],
+                topics: [
+                    "Bias-free survey design principles and practice",
+                    "Cultural adaptation for Lebanese and refugee contexts",
+                    "Interview guide development for KIIs and FGDs",
+                    "Digital integration strategies for field work",
+                    "Quality assurance protocols that catch errors early"
+                ],
+                outcomes: "Your data collection tools will be professional, culturally sensitive, and error-free. You'll gather better data with less effort and higher response rates."
+            },
+            module5: {
+                title: "Module 5: Logical Framework Mastery",
+                duration: "4 Hours",
+                overview: "Build logical frameworks that not only meet donor requirements but actually guide your program to success.",
+                objectives: [
+                    "Develop comprehensive theories of change that make sense",
+                    "Create SMART indicators that actually measure what matters",
+                    "Conduct risk assessments that prepare you for reality",
+                    "Ensure stakeholder buy-in through collaborative design"
+                ],
+                topics: [
+                    "Theory of Change: From concept to clear visualization",
+                    "Results chains that show clear cause and effect",
+                    "SMART indicators that satisfy donors and guide programs",
+                    "Risk assessment and mitigation planning",
+                    "Stakeholder engagement throughout the design process"
+                ],
+                outcomes: "You'll create logical frameworks that impress donors, guide implementation, and actually help achieve program goals. No more meaningless paperwork exercises."
+            },
+            module6: {
+                title: "Module 6: Advanced AI Integration",
+                duration: "3 Hours",
+                overview: "Take your AI skills to the next level with automation and integration that transforms your entire workflow.",
+                objectives: [
+                    "Automate repetitive M&E tasks to save hours weekly",
+                    "Connect AI to your existing tools and databases",
+                    "Create custom AI assistants for your specific needs",
+                    "Scale AI benefits across your entire team"
+                ],
+                topics: [
+                    "Workflow automation: From manual to magical",
+                    "API basics for non-technical users (yes, you can do this!)",
+                    "Batch processing: Analyze hundreds of documents at once",
+                    "Building custom AI assistants for your organization",
+                    "Change management: Bringing your team along"
+                ],
+                outcomes: "You'll move beyond individual productivity to transform your entire organization's M&E systems. This is where the real magic happens."
+            },
+            module7: {
+                title: "Module 7: UN M&E Frameworks + AI Integration",
+                duration: "3 Hours",
+                overview: "Align your AI superpowers with UN standards to work seamlessly with international organizations and meet global best practices.",
+                objectives: [
+                    "Master UNICEF's Results-Based Management with AI enhancement",
+                    "Apply UNDP's RBM framework using AI tools effectively",
+                    "Automate SDG indicator tracking and reporting",
+                    "Generate UN-standard reports in record time"
+                ],
+                topics: [
+                    "UNICEF RBM: Theory of Change and Results Chains with AI",
+                    "UNDP Framework: Outcome and output design automation",
+                    "SDG Integration: Automated indicator mapping and tracking",
+                    "UN Reporting Standards: Templates and quality assurance",
+                    "Real cases: How UN agencies are already using AI"
+                ],
+                outcomes: "You'll seamlessly integrate AI tools with UN frameworks, producing work that meets international standards while saving massive amounts of time."
+            }
+        };
+
+        // Modal functions
+        function openModule(moduleId) {
+            const modal = document.getElementById('moduleModal');
+            const modalContent = document.getElementById('modalContent');
+            const module = moduleDetails[moduleId];
+
+            modalContent.innerHTML = `
+                <h2>${module.title}</h2>
+                <p class="module-duration" style="background: var(--secondary-gradient); display: inline-block; color: white; padding: 8px 20px; border-radius: 25px; margin: 15px 0; font-weight: 600;">Duration: ${module.duration}</p>
+                
+                <div style="background: #f8f9fa; padding: 25px; border-radius: 15px; margin: 20px 0;">
+                    <h3 style="margin-bottom: 15px; color: #667eea;">📋 Overview</h3>
+                    <p style="line-height: 1.8; color: #555;">${module.overview}</p>
+                </div>
+
+                <h3 style="margin-top: 30px; margin-bottom: 20px; color: #667eea;">🎯 What You'll Learn</h3>
+                <ul style="line-height: 2; color: #555;">
+                    ${module.objectives.map(obj => `<li style="margin-bottom: 10px;">✓ ${obj}</li>`).join('')}
+                </ul>
+
+                <h3 style="margin-top: 30px; margin-bottom: 20px; color: #667eea;">📚 Topics Covered</h3>
+                <ul style="line-height: 2; color: #555;">
+                    ${module.topics.map(topic => `<li style="margin-bottom: 10px;">• ${topic}</li>`).join('')}
+                </ul>
+
+                <div style="background: var(--success-gradient); color: white; padding: 25px; border-radius: 15px; margin-top: 30px;">
+                    <h4 style="margin-bottom: 10px;">🚀 Module Outcome</h4>
+                    <p style="line-height: 1.8;">${module.outcomes}</p>
+                </div>
+
+                <div style="margin-top: 40px; text-align: center;">
+                    <a href="mailto:anas.baalbaki22@gmail.com?subject=${module.title} - More Information" class="btn btn-primary" style="text-decoration: none;">Learn More About This Module</a>
+                </div>
+            `;
+
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('moduleModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('moduleModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.remove('active');
+        }
+
+        // Smooth scrolling for navigation links including Contact
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        // Close mobile menu if open
+                        closeMenu();
+                        
+                        // Smooth scroll to target
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Add intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.stat-item, .module-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
