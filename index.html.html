@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI in NGOs - Transform Your Impact | Anas Baalbaki</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --success-gradient: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            --dark-gradient: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+            --un-blue: #0099FF;
+            --un-dark: #003366;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #000;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background for Hero */
+        .animated-bg {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            background: linear-gradient(270deg, #667eea, #764ba2, #f093fb, #f5576c);
+            background-size: 800% 800%;
+            animation: gradientShift 20s ease infinite;
+            z-index: -1;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: float-up 10s infinite linear;
+        }
+
+        @keyframes float-up {
+            from {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            to {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.5);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(0, 0, 0, 0.95);
+            padding: 10px 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            color: white;
+            padding: 80px 20px;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 30px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-highlight {
+            background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .trainer-intro {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .btn {
+            padding: 18px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--primary-gradient);
+            color: white;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-3px);
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        /* Stats Section */
+        .stats {
+            background: #fff;
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            border-radius: 15px;
+            background: #f8f9fa;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: bold;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        /* About Section */
+        .about-section {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 80px 0;
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .trainer-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .trainer-avatar {
+            width: 150px;
+            height: 150px;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .trainer-name {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .trainer-title {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        /* Modules Section */
+        .modules {
+            padding: 80px 0;
+            background: #f5f7fa;
+        }
+
+        .modules-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .section-header p {
+            font-size: 1.3rem;
+            color: #666;
+        }
+
+        .module-section {
+            margin-bottom: 60px;
+        }
+
+        .module-section-title {
+            font-size: 2rem;
+            color: #667eea;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .module-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .module-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--primary-gradient);
+        }
+
+        .module-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .module-card.un-module::before {
+            background: linear-gradient(90deg, var(--un-blue), var(--un-dark));
+        }
+
+        .module-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-gradient);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .un-module .module-number {
+            background: linear-gradient(135deg, var(--un-blue), var(--un-dark));
+        }
+
+        .module-title {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .module-description {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .module-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .module-features li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 25px;
+            color: #555;
+        }
+
+        .module-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #38ef7d;
+            font-weight: bold;
+        }
+
+        .module-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .module-duration {
+            background: var(--secondary-gradient);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .module-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .module-link:hover {
+            gap: 10px;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background: white;
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 40px;
+            border-radius: 20px;
+            position: relative;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #f5f5f5;
+        }
+
+        .close-modal:hover {
+            color: #333;
+            background: #eee;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--dark-gradient);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .cta-section h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0a0a0a;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .footer-section p, .footer-section li {
+            opacity: 0.8;
+            line-height: 1.8;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #667eea;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            opacity: 0.6;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.95);
+                flex-direction: column;
+                padding: 20px;
+                gap: 20px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .modules-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+    <div class="particles" id="particles"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">🤖 AI in NGOs</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" onclick="closeMenu()">Home</a></li>
+                <li><a href="#about" onclick="closeMenu()">About</a></li>
+                <li><a href="#modules" onclick="closeMenu()">Training</a></li>
+                <li><a href="#contact" onclick="closeMenu()">Get Started</a></li>
+            </ul>
+            <div class="mobile-menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">🚀 Transform Your NGO with AI</div>
+            <h1>Master <span class="hero-highlight">AI</span> for<br>NGO Excellence</h1>
+            <p class="hero-subtitle">Learn AI fundamentals and advanced M&E techniques. Save time. Deliver impact.</p>
+            <p class="trainer-intro">Led by <strong>Anas Baalbaki</strong> - Senior M&E Expert (7+ Years) & Google-Certified AI Specialist</p>
+            <div class="cta-buttons">
+                <a href="#modules" class="btn btn-primary">Explore Training</a>
+                <a href="#about" class="btn btn-secondary">Meet Your Trainer</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <svg width="30" height="30" viewBox="0 0 30 30">
+                <path d="M15 20 L10 15 M15 20 L20 15" stroke="white" stroke-width="2" fill="none"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number">7+</div>
+                <div class="stat-label">Years M&E Experience</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">AI</div>
+                <div class="stat-label">Google Certified</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">10+</div>
+                <div class="stat-label">NGOs Worked With</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">2025</div>
+                <div class="stat-label">Training Launch</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="about-container">
+            <div class="trainer-card">
+                <div class="trainer-avatar">AB</div>
+                <h3 class="trainer-name">Anas Baalbaki</h3>
+                <p class="trainer-title">Senior M&E Expert & AI Innovation Specialist</p>
+                <p style="color: #666; line-height: 1.8;">7+ years transforming M&E systems across humanitarian sectors. Google-certified in AI project design. Expertise in mental health, child protection, disabilities, and PHC quality.</p>
+            </div>
+            <div class="about-content">
+                <h2>Why AI is Essential for Modern NGOs</h2>
+                <p>As a Senior M&E specialist with extensive field experience, I've seen firsthand how NGOs struggle with overwhelming data, complex reporting requirements, and limited resources.</p>
+                <p><strong>AI changes everything.</strong> Through my Google certification in AI project design and hands-on implementation across multiple organizations, I've developed practical approaches that work in real NGO contexts.</p>
+                <p>This training combines my deep M&E expertise with cutting-edge AI tools, specifically designed for humanitarian professionals who want to maximize their impact while minimizing repetitive work.</p>
+                <div class="cta-buttons" style="margin-top: 30px;">
+                    <a href="#modules" class="btn btn-primary">View Curriculum</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modules Section -->
+    <section id="modules" class="modules">
+        <div class="modules-container">
+            <div class="section-header">
+                <h2>🎯 Comprehensive Training Program</h2>
+                <p>Master AI fundamentals, then apply them to transform your M&E practice</p>
+            </div>
+
+            <!-- AI Fundamentals Section -->
+            <div class="module-section">
+                <h3 class="module-section-title">Part 1: AI Fundamentals for NGO Professionals</h3>
+                <div class="modules-grid">
+                    <!-- Module 1 -->
+                    <div class="module-card" onclick="openModule('module1')">
+                        <div class="module-number">1</div>
+                        <h3 class="module-title">AI Foundations for NGOs</h3>
+                        <p class="module-description">Demystify AI and discover the essential tools that will transform your NGO work.</p>
+                        <ul class="module-features">
+                            <li>Understand AI in practical NGO terms</li>
+                            <li>Compare ChatGPT, Claude, Gemini & more</li>
+                            <li>Choose the right tool for each task</li>
+                            <li>Navigate free vs. paid options smartly</li>
+                        </ul>
+                        <div class="module-footer">
+                            <span class="module-duration">3 Hours</span>
+                            <span class="module-link">View Details →</span>
+                        </div>
+                    </div>
+
+                    <!-- Module 2 -->
+                    <div class="module-card" onclick="openModule('module2')">
+                        <div class="module-number">2</div>
+                        <h3 class="module-title">AI Communication Mastery</h3>
+                        <p class="module-description">Learn the secret language of AI to get professional results every time.</p>
+                        <ul class="module-features">
+                            <li>Master the RTF Framework</li>
+                            <li>Advanced RISE methodology</li>
+                            <li>Build your prompt library</li>
+                            <li>Avoid common AI pitfalls</li>
+                        </ul>
+                        <div class="module-footer">
+                            <span class="module-duration">3 Hours</span>
+                            <span class="module-link">View Details →</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- M&E in NGOs Section -->
+            <div class="module-section">
+                <h3 class="module-section-title">Part 2: AI-Powered M&E for NGOs</h3>
+                <div class="modules-grid">
+                    <!-- Module 3 -->
+                    <div class="module-card" onclick="openModule('module3')">
+                        <div class="module-number">3</div>
+                        <h3 class="module-title">AI-Powered Report Writing</h3>
+                        <p class="module-description">Create compelling donor reports and technical documents in a fraction of the time.</p>
+                        <ul class="module-features">
+                            <li>Donor report excellence</li>
+                            <li>Technical documentation mastery</li>
+                            <li>Data storytelling techniques</li>
+                            <li>Multi-stakeholder adaptation</li>
+                        </ul>
+                        <div class="module-footer">
+                            <span class="module-duration">3 Hours</span>
+                            <span class="module-link">View Details →</span>
+                        </div>
+                    </div>
+
+                    <!-- Module 4 -->
+                    <div class="module-card" onclick="openModule('module4')">
+                        <div class="module-number">4</div>
+                        <h3 class="module-title">Smart Data Collection</h3>
+                        <p class="module-description">Design surveys and tools that capture exactly what you need.</p>
+                        <ul class="module-features">
+                            <li>Bias-free survey design</li>
+                            <li>Interview guide development</li>
+                            <li>Cultural sensitivity integration</li>
+                            <li>Digital tool optimization</li>
+                        </ul>
+                        <div class="module-footer">
+                            <span class="module-duration">3 Hours</span>
+                            <span class="module-link">View Details →</span>
+                        </div>
+                    </div>
+
+                    <!-- Module 5 -->
+                    <div class="module-card" onclick="openModule('module5')">
+                        <div class="module-number">5</div>
+                        <h3 class="module-title">Logical Framework Mastery</h3>
+                        <p class="module-description">Build bulletproof logframes that impress donors and guide success.</p>
+                        <ul class="module-features">
+                            <li>Theory of Change development</li>
+                            <li>SMART indicator creation</li>
+                            <li>Risk assessment automation</li>
+                            <li>Stakeholder alignment tools</li>
+                        </ul>
+                        <div class="module-footer">
+                            <span class="module-duration">4 Hours</span>
+                            <span class="module-link">View Details →</span>
+                        </div>
+                    </div>
+
+                    <!-- Module 6 -->
+                    <div class="module-card" onclick="openModule('module6')">
+                        <div class="module-number">6</div>
+                        <h3 class="module-title">Advanced AI Integration</h3>
+                        <p class="module-description">Automate workflows and scale your impact exponentially.</p>
+                        <ul class="module-features">
+                            <li>Workflow automation strategies</li>
+                            <li>API integration simplified</li>
+                            <li>Batch processing mastery</li>
+                            <li>Custom AI assistant creation</li>
+                        </ul>
+                        <div class="module-footer">
+                            <span class="module-duration">3 Hours</span>
+                            <span class="module-link">View Details →</span>
+                        </div>
+                    </div>
+
+                    <!-- Module 7 - UN Frameworks -->
+                    <div class="module-card un-module" onclick="openModule('module7')">
+                        <div class="module-number">7</div>
+                        <h3 class="module-title">UN M&E Frameworks + AI</h3>
+                        <p class="module-description">Align your AI skills with UN standards for global impact.</p>
+                        <ul class="module-features">
+                            <li>UNICEF Results-Based Management</li>
+                            <li>UNDP RBM Framework integration</li>
+                            <li>SDG indicator automation</li>
+                            <li>UN reporting standards with AI</li>
+                        </ul>
+                        <div class="module-footer">
+                            <span class="module-duration">3 Hours</span>
+                            <span class="module-link">View Details →</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="cta-section">
+        <div class="cta-content">
+            <h2>🚀 Ready to Transform Your NGO with AI?</h2>
+            <p>Join the first cohort of NGO professionals mastering AI for humanitarian impact.</p>
+            <div class="cta-buttons">
+                <a href="mailto:anas_bbk@hotmail.co.uk?subject=AI in NGOs Training Enrollment" class="btn btn-primary" style="background: white; color: #667eea;">Enroll Now</a>
+                <a href="#modules" class="btn btn-secondary" style="border-color: white; color: white;">Download Syllabus</a>
+            </div>
+            <p style="margin-top: 30px; font-size: 1rem; opacity: 0.8;">Starting January 2025 • Limited spots available</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About the Training</h3>
+                <p>AI in NGOs is a comprehensive training program designed for humanitarian professionals ready to embrace AI technology for greater impact.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#modules">Training Modules</a></li>
+                    <li><a href="#about">About Anas Baalbaki</a></li>
+                    <li><a href="mailto:anas_bbk@hotmail.co.uk">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Get in Touch</h3>
+                <p>📧 anas_bbk@hotmail.co.uk</p>
+                <p>📱 +961 71 132513</p>
+                <p>🌍 Beirut, Lebanon</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 AI in NGOs by Anas Baalbaki. Empowering humanitarian professionals through AI innovation.</p>
+        </div>
+    </footer>
+
+    <!-- Modal for Module Details -->
+    <div id="moduleModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div id="modalContent">
+                <!-- Dynamic content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 10 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        // Module details data
+        const moduleDetails = {
+            module1: {
+                title: "Module 1: AI Foundations for NGOs",
+                duration: "3 Hours",
+                overview: "Demystify AI technology and discover how to leverage the best tools for your NGO work. No technical background required!",
+                objectives: [
+                    "Understand AI in simple, practical terms that make sense for NGO contexts",
+                    "Compare major AI platforms (ChatGPT, Claude, Gemini) with hands-on testing",
+                    "Select the perfect AI tool for each specific NGO task",
+                    "Make smart decisions between free and paid options for your organization's budget"
+                ],
+                topics: [
+                    "AI Basics: What it really is (and isn't) for NGO professionals",
+                    "The Big Three: ChatGPT vs Claude vs Gemini deep dive",
+                    "Hidden gems: Specialized AI tools for humanitarian work",
+                    "Cost-benefit analysis: When to upgrade and when free is enough",
+                    "Hands-on practice with real NGO scenarios"
+                ],
+                outcomes: "By the end of this module, you'll confidently navigate the AI landscape and choose the right tool for any NGO task, saving both time and money."
+            },
+            module2: {
+                title: "Module 2: AI Communication Mastery",
+                duration: "3 Hours",
+                overview: "Learn the secret language of AI. Transform from someone who gets mediocre results to an AI whisperer who gets professional outputs every time.",
+                objectives: [
+                    "Master the RTF (Role, Task, Format) framework for consistent quality",
+                    "Apply the advanced RISE framework for complex analytical tasks",
+                    "Build a personal library of high-performing prompts",
+                    "Identify and avoid the top 10 AI communication mistakes"
+                ],
+                topics: [
+                    "The psychology of AI: How machines 'think' and respond",
+                    "RTF Framework: Your formula for perfect prompts",
+                    "RISE Framework: Advanced techniques for complex tasks",
+                    "Real-time practice with immediate feedback",
+                    "Building your prompt library for instant productivity"
+                ],
+                outcomes: "You'll communicate with AI like a pro, getting first-try success instead of frustrating back-and-forth. Your outputs will be 10x better than 90% of AI users."
+            },
+            module3: {
+                title: "Module 3: AI-Powered Report Writing",
+                duration: "3 Hours",
+                overview: "Turn report writing from your biggest time drain into your secret weapon. Create compelling donor reports in minutes, not days.",
+                objectives: [
+                    "Generate donor reports that secure continued funding",
+                    "Create technical M&E documentation to professional standards",
+                    "Master data storytelling that brings numbers to life",
+                    "Adapt content perfectly for different stakeholder audiences"
+                ],
+                topics: [
+                    "Donor report formula: Structure that wins funding",
+                    "Technical writing: Evaluations, assessments, and audits",
+                    "The art of data storytelling with AI assistance",
+                    "Multi-stakeholder adaptation techniques",
+                    "Quality assurance and fact-checking protocols"
+                ],
+                outcomes: "You'll produce professional reports 70% faster while improving quality. Your donors will be impressed, and you'll have time for strategic work instead of endless writing."
+            },
+            module4: {
+                title: "Module 4: Smart Data Collection Design",
+                duration: "3 Hours",
+                overview: "Design data collection tools that capture exactly what you need while respecting cultural sensitivities and eliminating bias.",
+                objectives: [
+                    "Create surveys that people actually want to complete",
+                    "Develop culturally-appropriate interview guides",
+                    "Build automatic quality checks into your data collection",
+                    "Integrate with digital tools like KoBo and ODK seamlessly"
+                ],
+                topics: [
+                    "Bias-free survey design principles and practice",
+                    "Cultural adaptation for Lebanese and refugee contexts",
+                    "Interview guide development for KIIs and FGDs",
+                    "Digital integration strategies for field work",
+                    "Quality assurance protocols that catch errors early"
+                ],
+                outcomes: "Your data collection tools will be professional, culturally sensitive, and error-free. You'll gather better data with less effort and higher response rates."
+            },
+            module5: {
+                title: "Module 5: Logical Framework Mastery",
+                duration: "4 Hours",
+                overview: "Build logical frameworks that not only meet donor requirements but actually guide your program to success.",
+                objectives: [
+                    "Develop comprehensive theories of change that make sense",
+                    "Create SMART indicators that actually measure what matters",
+                    "Conduct risk assessments that prepare you for reality",
+                    "Ensure stakeholder buy-in through collaborative design"
+                ],
+                topics: [
+                    "Theory of Change: From concept to clear visualization",
+                    "Results chains that show clear cause and effect",
+                    "SMART indicators that satisfy donors and guide programs",
+                    "Risk assessment and mitigation planning",
+                    "Stakeholder engagement throughout the design process"
+                ],
+                outcomes: "You'll create logical frameworks that impress donors, guide implementation, and actually help achieve program goals. No more meaningless paperwork exercises."
+            },
+            module6: {
+                title: "Module 6: Advanced AI Integration",
+                duration: "3 Hours",
+                overview: "Take your AI skills to the next level with automation and integration that transforms your entire workflow.",
+                objectives: [
+                    "Automate repetitive M&E tasks to save hours weekly",
+                    "Connect AI to your existing tools and databases",
+                    "Create custom AI assistants for your specific needs",
+                    "Scale AI benefits across your entire team"
+                ],
+                topics: [
+                    "Workflow automation: From manual to magical",
+                    "API basics for non-technical users (yes, you can do this!)",
+                    "Batch processing: Analyze hundreds of documents at once",
+                    "Building custom AI assistants for your organization",
+                    "Change management: Bringing your team along"
+                ],
+                outcomes: "You'll move beyond individual productivity to transform your entire organization's M&E systems. This is where the real magic happens."
+            },
+            module7: {
+                title: "Module 7: UN M&E Frameworks + AI Integration",
+                duration: "3 Hours",
+                overview: "Align your AI superpowers with UN standards to work seamlessly with international organizations and meet global best practices.",
+                objectives: [
+                    "Master UNICEF's Results-Based Management with AI enhancement",
+                    "Apply UNDP's RBM framework using AI tools effectively",
+                    "Automate SDG indicator tracking and reporting",
+                    "Generate UN-standard reports in record time"
+                ],
+                topics: [
+                    "UNICEF RBM: Theory of Change and Results Chains with AI",
+                    "UNDP Framework: Outcome and output design automation",
+                    "SDG Integration: Automated indicator mapping and tracking",
+                    "UN Reporting Standards: Templates and quality assurance",
+                    "Real cases: How UN agencies are already using AI"
+                ],
+                outcomes: "You'll seamlessly integrate AI tools with UN frameworks, producing work that meets international standards while saving massive amounts of time."
+            }
+        };
+
+        // Modal functions
+        function openModule(moduleId) {
+            const modal = document.getElementById('moduleModal');
+            const modalContent = document.getElementById('modalContent');
+            const module = moduleDetails[moduleId];
+
+            modalContent.innerHTML = `
+                <h2>${module.title}</h2>
+                <p class="module-duration" style="background: var(--secondary-gradient); display: inline-block; color: white; padding: 8px 20px; border-radius: 25px; margin: 15px 0; font-weight: 600;">Duration: ${module.duration}</p>
+                
+                <div style="background: #f8f9fa; padding: 25px; border-radius: 15px; margin: 20px 0;">
+                    <h3 style="margin-bottom: 15px; color: #667eea;">📋 Overview</h3>
+                    <p style="line-height: 1.8; color: #555;">${module.overview}</p>
+                </div>
+
+                <h3 style="margin-top: 30px; margin-bottom: 20px; color: #667eea;">🎯 What You'll Learn</h3>
+                <ul style="line-height: 2; color: #555;">
+                    ${module.objectives.map(obj => `<li style="margin-bottom: 10px;">✓ ${obj}</li>`).join('')}
+                </ul>
+
+                <h3 style="margin-top: 30px; margin-bottom: 20px; color: #667eea;">📚 Topics Covered</h3>
+                <ul style="line-height: 2; color: #555;">
+                    ${module.topics.map(topic => `<li style="margin-bottom: 10px;">• ${topic}</li>`).join('')}
+                </ul>
+
+                <div style="background: var(--success-gradient); color: white; padding: 25px; border-radius: 15px; margin-top: 30px;">
+                    <h4 style="margin-bottom: 10px;">🚀 Module Outcome</h4>
+                    <p style="line-height: 1.8;">${module.outcomes}</p>
+                </div>
+
+                <div style="margin-top: 40px; text-align: center;">
+                    <a href="mailto:anas_bbk@hotmail.co.uk?subject=Enrollment: ${module.title}" class="btn btn-primary" style="text-decoration: none;">Enroll in This Module</a>
+                </div>
+            `;
+
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('moduleModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('moduleModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.remove('active');
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Add intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.stat-item, .module-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
